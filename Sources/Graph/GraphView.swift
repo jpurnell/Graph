@@ -28,10 +28,13 @@ struct GraphView<T>: View where T: Hashable {
 				}
 				// Draw nodes
 				ForEach(Array(graph.nodes), id: \.self) { node in
-					Circle()
-						.frame(width: graph.weightForNode(node), height: graph.weightForNode(node))
-						.position(self.point(for: node, in: geometry.size))
-						.opacity(1.0)
+					ZStack{
+						Group{
+							Circle()
+						}
+							.frame(width: graph.weightForNode(node), height: graph.weightForNode(node))
+							.position(self.point(for: node, in: geometry.size))
+					}
 				}
 			}
 		}
